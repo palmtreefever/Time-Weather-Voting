@@ -1,0 +1,24 @@
+name: TimeWeatherVoting
+main: com.palmtreefever.TimeWeatherVoting.Main
+version: 1.0
+api-version: 1.15
+author: palmtreefever
+description: Allows players to vote on the weather & time!
+
+commands:
+  weathervoteclear:
+     usage: /weathervoteclear
+     description: Vote to clear the current weather
+     permission: WeatherVote.Clear
+  weathervotekeep:
+     usage: /weathervotekeep
+     description: Vote to keep the current weather
+     permission: WeatherVote.Keep
+  timevoteclear:
+     usage: /timevoteclear
+     description: Vote to clear the current time
+     permission: TimeVote.Clear
+  timevotekeep:
+     usage: /timevotekeep
+     description: Vote to keep the current time
+     permission: TimeVote.Keep
