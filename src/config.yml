@@ -4,3 +4,29 @@
 
 #ServerPrefix
 ServerPrefix: '&8[&5ServerName&8]&e'
+
+#No Permission for commands
+NoPermission: '&4You do not have permission!'
+
+#Trying to change vote
+NoVoteChange: '&4You cannot change your vote!'
+
+#Joined after a vote already started
+NotApartOfCurrentVote: '&4You are not apart of the current vote!'
+
+BedSpawnSet: 'Bed spawn set to:'
+
+#Time Vote
+NoTimeVote: '&4There is no time vote currently going on!'
+VotedForNight: '&aSuccessfully voted to keep it night!'
+AlreadyVotedNight: '&4Already voted to keep it night!'
+VotedForDay: '&aSuccessfully voted to change it to day!'
+AlreadyVotedDay: '&4Already voted to change it to day!'
+
+#Weather Vote
+NoWeatherVote: '&4There is no weather vote currently going on!'
+VotedForClear: '&aSuccessfully voted to change the weather to clear!'
+AlreadyVotedClear: '&4Already voted to change the weather to clear!'
+VotedForKeep: '&aSuccessfully voted to keep the current weather!'
+AlreadyVotedKeep: '&4Already voted to keep the current weather!'
+

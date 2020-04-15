@@ -36,15 +36,13 @@ public abstract class Sleep_Timer extends BukkitRunnable {
 					} else if(Arrays.time_votersDay.size() > Arrays.time_votersNight.size()) {
 						for(String players: Arrays.time_voters) {
 							Player p = Bukkit.getPlayer(players);
+							//System.out.print("Before: " + p.getStatistic(Statistic.TIME_SINCE_REST)); Debug
+							p.setStatistic(Statistic.TIME_SINCE_REST, 0); // Could try teleporting the phantoms to ~ -512 ~ 
+							//System.out.print("After: " + p.getStatistic(Statistic.TIME_SINCE_REST)); Debug
 							p.sendMessage((ChatColor.translateAlternateColorCodes('&', sName + ChatColor.AQUA + " CHANGING the time to day! " + "Votes to KEEP the time: " + ChatColor.WHITE + Arrays.time_votersNight.size() 
 									+ ChatColor.AQUA + " : Votes to CHANGE the time: " + ChatColor.WHITE + Arrays.time_votersDay.size())));
 						}
 						Bukkit.getWorlds().get(0).setTime(0); //sets to sun rise
-						
-						for(String online : Arrays.time_voters) {
-							Player o = Bukkit.getPlayer(online);
-							o.setStatistic(Statistic.TIME_SINCE_REST, 0);
-						}
 						Arrays.clearTimeArrays();
 						Main.time_votingPeriod = false;
 						time = 61;

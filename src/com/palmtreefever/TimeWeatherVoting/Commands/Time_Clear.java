@@ -10,6 +10,12 @@ import com.palmtreefever.TimeWeatherVoting.Utils.Arrays;
 
 public class Time_Clear implements CommandExecutor {
 	String sName = Main.plugin.getConfig().getString("ServerPrefix");
+	String noPerm = Main.plugin.getConfig().getString("NoPermission");
+	String noVote = Main.plugin.getConfig().getString("NoTimeVote");
+	String noVoteChange = Main.plugin.getConfig().getString("NoVoteChange");
+	String notApartOfCurrentVote = Main.plugin.getConfig().getString("NotApartOfCurrentVote");
+	String VotedForDay = Main.plugin.getConfig().getString("VotedForDay");
+	String AlreadyVotedDay = Main.plugin.getConfig().getString("AlreadyVotedDay");
 
 	public boolean onCommand(CommandSender sender, Command cmd, String label,
 			String[] args) {
@@ -20,23 +26,23 @@ public class Time_Clear implements CommandExecutor {
 						if (!Arrays.time_votersNight.contains(sender.getName())) {
 							if (!Arrays.time_votersDay.contains(sender.getName())) {
 								Arrays.time_votersDay.add(sender.getName());
-								sender.sendMessage((ChatColor.translateAlternateColorCodes('&',sName + ChatColor.GREEN + "Successfully voted to change the time to Day!")));
+								sender.sendMessage((ChatColor.translateAlternateColorCodes('&',sName + VotedForDay)));
 							} else {
-								sender.sendMessage((ChatColor.translateAlternateColorCodes('&',sName + ChatColor.RED + "You already voted to change the time!")));
+								sender.sendMessage((ChatColor.translateAlternateColorCodes('&',sName + AlreadyVotedDay)));
 							}
 						} else {
-							sender.sendMessage((ChatColor.translateAlternateColorCodes('&',sName + ChatColor.RED + "You can not change your vote from night to day!")));
+							sender.sendMessage((ChatColor.translateAlternateColorCodes('&',sName + noVoteChange)));
 						}
 					} else {
-						sender.sendMessage((ChatColor.translateAlternateColorCodes('&',sName + ChatColor.RED + "You are not apart of the current vote!")));
+						sender.sendMessage((ChatColor.translateAlternateColorCodes('&',sName + notApartOfCurrentVote)));
 					}
 					// return true;
 				} else {
-					sender.sendMessage((ChatColor.translateAlternateColorCodes('&',sName + ChatColor.RED + "There is no time vote currently going on!")));
+					sender.sendMessage((ChatColor.translateAlternateColorCodes('&',sName + noVote)));
 				}
 				return true;
 			}
-			sender.sendMessage((ChatColor.translateAlternateColorCodes('&',sName + ChatColor.RED + "You do not have permission!")));
+			sender.sendMessage((ChatColor.translateAlternateColorCodes('&',sName + noPerm)));
 		}
 		return false;
 	}

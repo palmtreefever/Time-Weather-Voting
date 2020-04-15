@@ -10,6 +10,13 @@ import com.palmtreefever.TimeWeatherVoting.Utils.Arrays;
 
 public class Weather_Clear implements CommandExecutor {
 	String sName = Main.plugin.getConfig().getString("ServerPrefix");
+	String noPerm = Main.plugin.getConfig().getString("NoPermission");
+	String noVote = Main.plugin.getConfig().getString("NoWeatherVote");
+	String notApartOfCurrentVote = Main.plugin.getConfig().getString("NotApartOfCurrentVote");
+	String noVoteChange = Main.plugin.getConfig().getString("NoVoteChange");
+	String VotedForClear = Main.plugin.getConfig().getString("VotedForClear");
+	String AlreadyVotedClear = Main.plugin.getConfig().getString("AlreadyVotedClear");
+
 
 	public boolean onCommand(CommandSender sender, Command cmd, String label,
 			String[] args) {
@@ -20,23 +27,23 @@ public class Weather_Clear implements CommandExecutor {
 						if (!Arrays.weather_votersKeep.contains(sender.getName())) {
 							if (!Arrays.weather_votersClear.contains(sender.getName())) {
 								Arrays.weather_votersClear.add(sender.getName());
-								sender.sendMessage((ChatColor.translateAlternateColorCodes('&',sName + ChatColor.GREEN + "Successfully voted to clear the weather!")));
+								sender.sendMessage((ChatColor.translateAlternateColorCodes('&',sName + VotedForClear)));
 							} else {
-								sender.sendMessage((ChatColor.translateAlternateColorCodes('&',sName + ChatColor.RED + "You already voted to clear the weather!")));
+								sender.sendMessage((ChatColor.translateAlternateColorCodes('&',sName + AlreadyVotedClear)));
 							}
 						} else {
-							sender.sendMessage((ChatColor.translateAlternateColorCodes('&',sName + ChatColor.RED + "You can not change your vote from keep to clear!")));
+							sender.sendMessage((ChatColor.translateAlternateColorCodes('&',sName + noVoteChange)));
 						}
 					} else {
-						sender.sendMessage((ChatColor.translateAlternateColorCodes('&',sName + ChatColor.RED + "You are not apart of the current vote!")));
+						sender.sendMessage((ChatColor.translateAlternateColorCodes('&',sName + notApartOfCurrentVote)));
 					}
 					// return true;
 				} else {
-					sender.sendMessage((ChatColor.translateAlternateColorCodes('&',sName + ChatColor.RED + "There is no weather vote currently going on!")));
+					sender.sendMessage((ChatColor.translateAlternateColorCodes('&',sName + noVote)));
 				}
 				return true;
 			}
-			sender.sendMessage((ChatColor.translateAlternateColorCodes('&',sName + ChatColor.RED + "You do not have permission!")));
+			sender.sendMessage((ChatColor.translateAlternateColorCodes('&',sName + noPerm)));
 		}
 		return false;
 	}
